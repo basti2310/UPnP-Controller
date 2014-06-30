@@ -105,7 +105,7 @@
 
 - (void)getTrackTimePosition
 {
-    self.slidSeek.value = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"absTime"]];
+    self.slidSeek.value = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"relTime"]];
 }
 
 #pragma mark - Buttons

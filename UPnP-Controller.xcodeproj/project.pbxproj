@@ -276,6 +276,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = easyMOBIZ;
 				TargetAttributes = {
+					402C9D70190C2C57000ED98F = {
+						DevelopmentTeam = 3J5YUKMD69;
+					};
 					402C9D8B190C2C57000ED98F = {
 						TestTargetID = 402C9D70190C2C57000ED98F;
 					};
@@ -456,6 +459,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UPnP-Controller/UPnP-Controller-Prefix.pch";
 				INFOPLIST_FILE = "UPnP-Controller/UPnP-Controller-Info.plist";
@@ -465,6 +470,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../../../src/api ../../../src/port/ios";
 				WRAPPER_EXTENSION = app;
 			};
@@ -475,6 +481,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UPnP-Controller/UPnP-Controller-Prefix.pch";
 				INFOPLIST_FILE = "UPnP-Controller/UPnP-Controller-Info.plist";
@@ -484,6 +492,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../../../src/api ../../../src/port/ios";
 				WRAPPER_EXTENSION = app;
 			};

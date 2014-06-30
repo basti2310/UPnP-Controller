@@ -59,8 +59,6 @@
 
     // set cover
     self.imgCover.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.albumArt]]];
-    
-    NSLog(@"// authors: %@", item.authors);
 }
 
 - (void)didReceiveMemoryWarning
