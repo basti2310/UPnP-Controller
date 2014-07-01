@@ -126,6 +126,9 @@
 {
     GLB.currentTrackNumber--;
     
+    if (GLB.currentTrackNumber < 0)
+        GLB.currentTrackNumber = GLB.currentPlaylist.count;
+    
     error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
     if (error == -1) NSLog(@"no renderer");
     
@@ -138,6 +141,9 @@
 - (IBAction)btnNext:(id)sender
 {
     GLB.currentTrackNumber++;
+    
+    if (GLB.currentTrackNumber >= GLB.currentPlaylist.count)
+        GLB.currentTrackNumber = 0;
     
     error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
     if (error == -1) NSLog(@"no renderer");
