@@ -32,6 +32,7 @@
 @implementation RenderControl_ViewController
 {
     int error;
+    BOOL isNext;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -97,6 +98,13 @@
 - (void)getTrackTimePosition
 {
     self.slidSeek.value = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"relTime"]];
+    
+    if ((self.slidSeek.value >= self.slidSeek.maximumValue - 1) && !isNext)
+    {
+        // play next track
+        isNext = YES;
+        [self performSelector:@selector(btnNext:) withObject:nil afterDelay:1.5];
+    }
 }
 
 #pragma mark - Buttons
@@ -127,31 +135,21 @@
     GLB.currentTrackNumber--;
     
     if (GLB.currentTrackNumber < 0)
-        GLB.currentTrackNumber = GLB.currentPlaylist.count;
+        GLB.currentTrackNumber = GLB.currentPlaylist.count - 1;
     
-    error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
-    if (error == -1) NSLog(@"no renderer");
-    
-    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
-    
-    // set track name
-    [self updateTrackName];
+    [self playNextPrevious];
 }
 
 - (IBAction)btnNext:(id)sender
 {
     GLB.currentTrackNumber++;
     
-    if (GLB.currentTrackNumber >= GLB.currentPlaylist.count)
+    if (GLB.currentTrackNumber >= GLB.currentPlaylist.count - 1)
         GLB.currentTrackNumber = 0;
     
-    error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
-    if (error == -1) NSLog(@"no renderer");
+    [self playNextPrevious];
     
-    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
-    
-    // set track name
-    [self updateTrackName];
+    isNext = NO;
 }
 
 #pragma mark - Slider
@@ -181,6 +179,20 @@
         MediaServer1ItemObject *item = [[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"MediaServer1ItemObject"];
         self.lblTrackName.text = item.title;
     }
+}
+
+- (void)playNextPrevious
+{
+    error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
+    if (error == -1) NSLog(@"no renderer");
+    
+    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
+    
+    // set track name
+    [self updateTrackName];
+    
+    // set seek slider max value
+    self.slidSeek.maximumValue = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
 }
 
 @end
