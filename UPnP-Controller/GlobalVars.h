@@ -24,6 +24,9 @@
 
 @property (nonatomic, strong) MediaServer1BasicObject *currentServerBasicObject;
 
+@property (nonatomic, strong) NSArray *currentPlaylist;
+@property (nonatomic, readwrite) int currentTrackNumber;
+
 + (GlobalVars *)sharedInstance;
 
 @end

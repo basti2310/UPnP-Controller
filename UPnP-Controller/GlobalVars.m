@@ -22,6 +22,8 @@
         self.upnpServers = [[NSMutableArray alloc] init];
         self.upnpRenderer = [[NSMutableArray alloc] init];
         self.currentServerBasicObject = nil;
+        self.currentPlaylist = nil;
+        self.currentTrackNumber = 0;
     }
     
     return self;

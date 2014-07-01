@@ -76,17 +76,8 @@
     self.slidVolume.minimumValue = [[[StateVariableRangeList getVolumeMinMax] objectForKey:@"VolumeMin"] floatValue];
     self.slidVolume.maximumValue = [[[StateVariableRangeList getVolumeMinMax] objectForKey:@"VolumeMax"] floatValue];
     
-    if (GLB.currentServerBasicObject != nil)
-    {
-        // set track title
-        self.lblTrackName.text = GLB.currentServerBasicObject.title;
-    }
-    else
-    {
-        // set track title, if there is no current MediaServer1BasicObject available
-        MediaServer1ItemObject *item = [[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"MediaServer1ItemObject"];
-        self.lblTrackName.text = item.title;
-    }
+    // set track name
+    [self updateTrackName];
     
     // set seek slider max value
     self.slidSeek.maximumValue = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
@@ -133,14 +124,28 @@
 
 - (IBAction)btnPrevious:(id)sender
 {
-    error = [[AVTransport getInstance] previous];
+    GLB.currentTrackNumber--;
+    
+    error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
     if (error == -1) NSLog(@"no renderer");
+    
+    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
+    
+    // set track name
+    [self updateTrackName];
 }
 
 - (IBAction)btnNext:(id)sender
 {
-    error = [[AVTransport getInstance] next];
+    GLB.currentTrackNumber++;
+    
+    error = [[AVTransport getInstance] play:GLB.currentPlaylist position:GLB.currentTrackNumber];
     if (error == -1) NSLog(@"no renderer");
+    
+    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
+    
+    // set track name
+    [self updateTrackName];
 }
 
 #pragma mark - Slider
@@ -153,6 +158,23 @@
 - (IBAction)slidSeek:(UISlider *)sender
 {
     [[AVTransport getInstance] seekWithMode:@"REL_TIME" andTarget:[otherFunctions floatIntoTimeString:sender.value]];
+}
+
+#pragma mark - other functions
+
+- (void)updateTrackName
+{
+    if (GLB.currentServerBasicObject != nil)
+    {
+        // set track title
+        self.lblTrackName.text = GLB.currentServerBasicObject.title;
+    }
+    else
+    {
+        // set track title, if there is no current MediaServer1BasicObject available
+        MediaServer1ItemObject *item = [[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"MediaServer1ItemObject"];
+        self.lblTrackName.text = item.title;
+    }
 }
 
 @end

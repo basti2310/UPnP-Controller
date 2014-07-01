@@ -105,6 +105,8 @@
         error = [[AVTransport getInstance] play:playlist position:(int)indexPath.row];
         
         GLB.currentServerBasicObject = item;
+        GLB.currentPlaylist = playlist;
+        GLB.currentTrackNumber = (int)indexPath.row;
         
         if (error == -1) NSLog(@"no playlist or renderer");
     }
