@@ -43,7 +43,7 @@
     self.title = self.header;
     
     // set server and renderer
-    [[AVTransport getInstance] setRenderer:GLB.renderer];
+    [[AVTransport getInstance] setRenderer:GLB.renderer andServer:GLB.server];
 
     // browse content
     playlist = [[ContentDirectory getInstance] browseContentWithDevice:GLB.server andRootID:self.rootID];

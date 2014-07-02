@@ -51,7 +51,7 @@
     
     // set server and renderer
     [[Rendering getInstance] setRenderer:GLB.renderer];
-    [[AVTransport getInstance] setRenderer:GLB.renderer];
+    [[AVTransport getInstance] setRenderer:GLB.renderer andServer:GLB.server];
     
     // get available actions
     NSArray *renderActions = @[@"SetVolume", @"GetVolume"];
@@ -138,6 +138,7 @@
         GLB.currentTrackNumber = GLB.currentPlaylist.count - 1;
     
     [self playNextPrevious];
+    NSLog(@"// PREVIOUS");
 }
 
 - (IBAction)btnNext:(id)sender
@@ -149,7 +150,7 @@
     
     [self playNextPrevious];
     
-    isNext = NO;
+    NSLog(@"// NEXT");
 }
 
 #pragma mark - Slider
@@ -191,8 +192,14 @@
     // set track name
     [self updateTrackName];
     
+    [self performSelector:@selector(getTrackDuration) withObject:nil afterDelay:1.5];
+}
+
+- (void)getTrackDuration
+{
     // set seek slider max value
     self.slidSeek.maximumValue = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
+    isNext = NO;
 }
 
 @end
