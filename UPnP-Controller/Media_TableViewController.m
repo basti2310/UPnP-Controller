@@ -98,6 +98,15 @@
     {
         container = [playlist objectAtIndex:indexPath.row];
         
+        if ([item.objectClass isEqualToString:@"object.container.playlistContainer"])
+        {
+            error = [[AVTransport getInstance] playPlaylist:container];
+            
+            GLB.currentServerBasicObject = item;
+            
+            if (error == -1) NSLog(@"no renderer or server");
+        }
+    
         [self performSegueWithIdentifier:@"newfolder" sender:self];
     }
     else
@@ -108,7 +117,7 @@
         GLB.currentPlaylist = playlist;
         GLB.currentTrackNumber = (int)indexPath.row;
         
-        if (error == -1) NSLog(@"no playlist or renderer");
+        if (error == -1) NSLog(@"no playlist, renderer or server");
     }
 }
 
