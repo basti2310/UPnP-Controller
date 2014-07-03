@@ -10,6 +10,7 @@
 #import "MediaServer1Device.h"
 #import "MediaRenderer1Device.h"
 #import "MediaServer1BasicObject.h"
+#import "MediaServer1ContainerObject.h"
 
 #define GLB  [GlobalVars sharedInstance]   
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *upnpRenderer;
 
 @property (nonatomic, strong) MediaServer1BasicObject *currentServerBasicObject;
+@property (nonatomic, strong) MediaServer1ContainerObject *currentServerContainerObject;
 
 @property (nonatomic, strong) NSArray *currentPlaylist;
 @property (nonatomic, readwrite) int currentTrackNumber;

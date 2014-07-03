@@ -383,7 +383,13 @@
                             <outlet property="delegate" destination="7iF-Gq-4xM" id="LrD-m3-PLT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KvE-87-8yj"/>
+                    <navigationItem key="navigationItem" id="KvE-87-8yj">
+                        <barButtonItem key="rightBarButtonItem" title="Play Folder" id="Kjm-UX-QvQ">
+                            <connections>
+                                <action selector="btnPlayFolder:" destination="7iF-Gq-4xM" id="9fr-Sq-ksh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjg-0M-xaN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iyf-aQ-6qH">

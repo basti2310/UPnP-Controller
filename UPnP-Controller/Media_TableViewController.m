@@ -75,8 +75,6 @@
     
     MediaServer1ItemObject *item = [playlist objectAtIndex:indexPath.row];
     
-    NSLog(@"// item object class: %@", item.objectClass);
-    
     if (item.isContainer)
     {
         cell.textLabel.text = item.title;
@@ -97,27 +95,11 @@
     if (item.isContainer)
     {
         container = [playlist objectAtIndex:indexPath.row];
+        GLB.currentServerContainerObject = container;
         
-        if ([item.objectClass isEqualToString:@"object.container.playlistContainer"] || [item.objectClass isEqualToString:@"object.container.album.musicAlbum"])
-        {
-            error = [[AVTransport getInstance] playPlaylist:container];
-            
-            NSLog(@"// container uri: %@", container.uris);
-            
-            if (error == 0)
-            {
-                GLB.currentServerBasicObject = item;
-            }
-            else if (error == -1)
-            {
-                NSLog(@"no renderer or server");
-            }
-            else if (error == 1)
-            {
-               NSLog(@"false uri");
-            }
-        }
-    
+        NSLog(@"// container uri: %@", container.uris);
+        NSLog(@"// container class: %@", container.objectClass);
+        
         [self performSegueWithIdentifier:@"newfolder" sender:self];
     }
     else
@@ -149,5 +131,24 @@
     }
 }
 
+#pragma mark - Buttons
+
+- (IBAction)btnPlayFolder:(id)sender
+{
+    error = [[AVTransport getInstance] playPlaylist:GLB.currentServerContainerObject];
+    
+    if (error == -1)
+    {
+        NSLog(@"no renderer or server");
+    }
+    else if (error == 1)
+    {
+        NSLog(@"false uri");
+    }
+    else if (error == 2)
+    {
+        NSLog(@"no uri");
+    }
+}
 
 @end
