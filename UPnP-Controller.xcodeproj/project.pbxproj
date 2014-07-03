@@ -220,10 +220,10 @@
 				40A277751916C88A00A08AC9 /* ContentDirectory.m */,
 				40A277781916C88A00A08AC9 /* Rendering.h */,
 				40A277791916C88A00A08AC9 /* Rendering.m */,
-				40A277761916C88A00A08AC9 /* otherFunctions.h */,
-				40A277771916C88A00A08AC9 /* otherFunctions.m */,
 				40D16AD2193D0B21003AF8D1 /* StateVariableRangeList.h */,
 				40D16AD3193D0B21003AF8D1 /* StateVariableRangeList.m */,
+				40A277761916C88A00A08AC9 /* otherFunctions.h */,
+				40A277771916C88A00A08AC9 /* otherFunctions.m */,
 			);
 			name = "UPnP-Classes";
 			path = "../../../../UPnP-Classes";

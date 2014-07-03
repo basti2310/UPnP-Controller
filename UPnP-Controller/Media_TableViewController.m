@@ -75,6 +75,8 @@
     
     MediaServer1ItemObject *item = [playlist objectAtIndex:indexPath.row];
     
+    NSLog(@"// item object class: %@", item.objectClass);
+    
     if (item.isContainer)
     {
         cell.textLabel.text = item.title;
@@ -82,8 +84,6 @@
     else
     {
         cell.textLabel.text = item.title;
-        cell.detailTextLabel.numberOfLines = 2;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"Authors: %@", [item.authors componentsJoinedByString:@", "]];
         cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.albumArt]]];
     }
     
@@ -98,26 +98,42 @@
     {
         container = [playlist objectAtIndex:indexPath.row];
         
-        if ([item.objectClass isEqualToString:@"object.container.playlistContainer"])
+        if ([item.objectClass isEqualToString:@"object.container.playlistContainer"] || [item.objectClass isEqualToString:@"object.container.album.musicAlbum"])
         {
             error = [[AVTransport getInstance] playPlaylist:container];
             
-            GLB.currentServerBasicObject = item;
+            NSLog(@"// container uri: %@", container.uris);
             
-            if (error == -1) NSLog(@"no renderer or server");
+            if (error == 0)
+            {
+                GLB.currentServerBasicObject = item;
+            }
+            else if (error == -1)
+            {
+                NSLog(@"no renderer or server");
+            }
+            else if (error == 1)
+            {
+               NSLog(@"false uri");
+            }
         }
     
         [self performSegueWithIdentifier:@"newfolder" sender:self];
     }
     else
     {
-        error = [[AVTransport getInstance] play:playlist position:(int)indexPath.row];
+        error = [[AVTransport getInstance] play:item];
         
-        GLB.currentServerBasicObject = item;
-        GLB.currentPlaylist = playlist;
-        GLB.currentTrackNumber = (int)indexPath.row;
-        
-        if (error == -1) NSLog(@"no playlist, renderer or server");
+        if (error == 0)
+        {
+            GLB.currentServerBasicObject = item;
+            GLB.currentPlaylist = playlist;
+            GLB.currentTrackNumber = (int)indexPath.row;
+        }
+        else if (error == -1)
+        {
+            NSLog(@"no playlist, renderer or server");
+        }
     }
 }
 
