@@ -74,7 +74,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     MediaServer1ItemObject *item = [playlist objectAtIndex:indexPath.row];
-    
+        
     if (item.isContainer)
     {
         cell.textLabel.text = item.title;
@@ -83,6 +83,7 @@
     {
         cell.textLabel.text = item.title;
         cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.albumArt]]];
+        
     }
     
     return cell;
@@ -95,16 +96,24 @@
     if (item.isContainer)
     {
         container = [playlist objectAtIndex:indexPath.row];
-        GLB.currentServerContainerObject = container;
         
-        NSLog(@"// container uri: %@", container.uris);
-        NSLog(@"// container class: %@", container.objectClass);
+        GLB.currentServerContainerObject = container;
         
         [self performSegueWithIdentifier:@"newfolder" sender:self];
     }
     else
     {
-        error = [[AVTransport getInstance] play:item];
+        NSRange range = [[(MediaServer1ItemObject *)item uri] rangeOfString:@"x-sonosapi-stream:" options:NSCaseInsensitiveSearch];
+        
+        if(range.location == 0)
+        {
+            error = [[AVTransport getInstance] playRadio:(MediaServer1ItemObject *)item];
+            NSLog(@"// play radio");
+        }
+        else
+        {
+            error = [[AVTransport getInstance] play:item];
+        }
         
         if (error == 0)
         {
@@ -148,6 +157,12 @@
     else if (error == 2)
     {
         NSLog(@"no uri");
+    }
+    else if (error == 0)
+    {
+        GLB.currentServerBasicObject = [playlist objectAtIndex:0];
+        GLB.currentPlaylist = playlist;
+        GLB.currentTrackNumber = 0;
     }
 }
 
