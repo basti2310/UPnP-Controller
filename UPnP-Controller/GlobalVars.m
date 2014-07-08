@@ -25,6 +25,7 @@
         self.currentServerContainerObject = nil;
         self.currentPlaylist = nil;
         self.currentTrackNumber = 0;
+        self.currentQueueUri = nil;
     }
     
     return self;

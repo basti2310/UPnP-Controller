@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSArray *currentPlaylist;
 @property (nonatomic, readwrite) int currentTrackNumber;
 
+@property (nonatomic, strong) NSString *currentQueueUri;
+
 + (GlobalVars *)sharedInstance;
 
 @end

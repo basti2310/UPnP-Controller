@@ -15,6 +15,7 @@
 #import "StateVariableRange.h"
 #import "StateVariableList.h"
 #import "StateVariableRangeList.h"
+#import "ContentDirectory.h"
 
 @interface Init_ViewController ()
 
@@ -44,7 +45,6 @@
     // start searching upnp devices
     UPnPInit = [[Start_Stop_Searching alloc] init];
     [UPnPInit startUPnPDeviceSearch];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,10 +86,12 @@
 
 - (IBAction)btnShowGLBVars:(id)sender
 {
+    /*
     // get min & max values
     NSLog(@"Volume: %@", [StateVariableRangeList getVolumeMinMax]);
     NSLog(@"Channel: %@", [StateVariableRangeList getChannelList]);
     NSLog(@"VolumeDB: %@", [StateVariableRangeList getVolumeDBMinMax]);
+     */
 }
 
 #pragma mark - Segues

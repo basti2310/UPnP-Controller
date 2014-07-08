@@ -10,6 +10,7 @@
 #import "UPnPManager.h"
 #import "otherFunctions.h"
 #import "MediaServer1Device.h"
+#import "ContentDirectory.h"
 
 @interface Server_TableViewController ()
 
@@ -46,6 +47,13 @@
 - (IBAction)btnDone:(id)sender
 {
     GLB.server = server;
+    
+    NSArray *queueUris = [[ContentDirectory getInstance] getQueuesOfMediaDirectoryOnServer:GLB.server withRootID:@"0"];
+    
+    if (queueUris.count > 0)
+        GLB.currentQueueUri = queueUris[0];
+    
+    NSLog(@"// current queue uri: %@", GLB.currentQueueUri);
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

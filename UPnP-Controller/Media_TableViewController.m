@@ -46,7 +46,7 @@
     [[AVTransport getInstance] setRenderer:GLB.renderer andServer:GLB.server];
 
     // browse content
-    playlist = [[ContentDirectory getInstance] browseContentWithDevice:GLB.server andRootID:self.rootID];
+    playlist = [[ContentDirectory getInstance] browseContentWithDevice:GLB.server andRootID:self.rootID];    
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,7 +112,9 @@
         }
         else
         {
-            error = [[AVTransport getInstance] play:item];
+            // only for sonos
+            error = [[AVTransport getInstance] playTrackSonos:(MediaServer1ItemObject *)item withQueue:GLB.currentQueueUri];
+            //error = [[AVTransport getInstance] play:item];
         }
         
         if (error == 0)
