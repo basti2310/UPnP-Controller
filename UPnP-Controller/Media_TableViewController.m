@@ -86,15 +86,15 @@
         
         if (item.albumArt != nil)
         {
-            NSString *albumArt = [OtherFunctions getURLForAlbumArt:item.albumArt forRenderer:GLB.renderer];
-        
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:albumArt]]];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    cell.imageView.image = image;
-                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                });
-            });
+//            NSString *albumArt = [OtherFunctions getURLForAlbumArt:item.albumArt forRenderer:GLB.renderer];
+//        
+//            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:albumArt]]];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    cell.imageView.image = image;
+//                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//                });
+//            });
         }
     }
     
@@ -158,8 +158,8 @@
 
 - (IBAction)btnPlayFolder:(id)sender
 {
-    //error = [[AVTransport getInstance] playPlaylist:GLB.currentServerContainerObject];
-    error = [[AVTransport getInstance] playQueueSonos:GLB.currentServerContainerObject withQueue:GLB.currentQueueUri];
+    error = [[AVTransport getInstance] playPlaylist:GLB.currentServerContainerObject];
+    //error = [[AVTransport getInstance] playQueueSonos:GLB.currentServerContainerObject withQueue:GLB.currentQueueUri];
     
     if (error == -1)
     {

@@ -72,14 +72,10 @@
     // set volume
     if ([OtherFunctions actionList:availableRenderActions containsAction:@"GetVolume"])
         self.slidVolume.value = [[[Rendering getInstance] getVolume] floatValue];
-    
-    /*
+
     // set volume slider min max
     self.slidVolume.minimumValue = [[[StateVariableRangeList getVolumeMinMax] objectForKey:@"VolumeMin"] floatValue];
     self.slidVolume.maximumValue = [[[StateVariableRangeList getVolumeMinMax] objectForKey:@"VolumeMax"] floatValue];
-     */
-    self.slidVolume.minimumValue = 0;
-    self.slidVolume.maximumValue = 100;
     
     // set track name
     [self updateTrackName];
@@ -88,7 +84,7 @@
     self.slidSeek.maximumValue = [OtherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
     
     // get track time
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(getTrackTimePosition) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(getTrackTimePosition) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,27 +132,34 @@
 
 - (IBAction)btnPrevious:(id)sender
 {
-    GLB.currentTrackNumber--;
+//    GLB.currentTrackNumber--;
+//    
+//    if (GLB.currentTrackNumber < 0)
+//        GLB.currentTrackNumber = GLB.currentPlaylist.count - 1;
+//    
+//    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
+//    
+//    [self playNextPrevious];
     
-    if (GLB.currentTrackNumber < 0)
-        GLB.currentTrackNumber = GLB.currentPlaylist.count - 1;
+    error = [[AVTransport getInstance] previous];
+    if (error == -1) NSLog(@"no renderer");
     
-    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
-    
-    [self playNextPrevious];
     NSLog(@"// PREVIOUS");
 }
 
 - (IBAction)btnNext:(id)sender
 {
-    GLB.currentTrackNumber++;
+//    GLB.currentTrackNumber++;
+//    
+//    if (GLB.currentTrackNumber >= GLB.currentPlaylist.count - 1)
+//        GLB.currentTrackNumber = 0;
+//    
+//    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
+//    
+//    [self playNextPrevious];
     
-    if (GLB.currentTrackNumber >= GLB.currentPlaylist.count - 1)
-        GLB.currentTrackNumber = 0;
-    
-    GLB.currentServerBasicObject = [GLB.currentPlaylist objectAtIndex:GLB.currentTrackNumber];
-    
-    [self playNextPrevious];
+    error = [[AVTransport getInstance] next];
+    if (error == -1) NSLog(@"no renderer");
     
     NSLog(@"// NEXT");
 }
