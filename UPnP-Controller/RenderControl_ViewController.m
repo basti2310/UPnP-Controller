@@ -9,7 +9,7 @@
 #import "RenderControl_ViewController.h"
 #import "Rendering.h"
 #import "AVTransport.h"
-#import "otherFunctions.h"
+#import "OtherFunctions.h"
 #import "UPnPManager.h"
 #import "MediaServerBasicObjectParser.h"
 #import "StateVariableRangeList.h"
@@ -57,34 +57,38 @@
     NSArray *renderActions = @[@"SetVolume", @"GetVolume"];
     NSArray *avtransportActions = @[@"Play", @"Pause", @"Stop", @"Previous", @"Next", @"GetPositionInfo", @"Seek"];
     
-    NSArray *availableRenderActions = [otherFunctions availableActionsForDevice:GLB.renderer forUrn:URN_SERVICE_RENDERING_CONTROL_1 withNeededActions:renderActions];
-    NSArray *availableAVTransportActions = [otherFunctions availableActionsForDevice:GLB.renderer forUrn:URN_SERVICE_AVTRANSPORT_1 withNeededActions:avtransportActions];
+    NSArray *availableRenderActions = [OtherFunctions availableActionsForDevice:GLB.renderer forUrn:URN_SERVICE_RENDERING_CONTROL_1 withNeededActions:renderActions];
+    NSArray *availableAVTransportActions = [OtherFunctions availableActionsForDevice:GLB.renderer forUrn:URN_SERVICE_AVTRANSPORT_1 withNeededActions:avtransportActions];
     
     // check if buttons, etc. are available
-    self.btnPlay.enabled = [otherFunctions actionList:availableAVTransportActions containsAction:@"Play"];
-    self.btnPause.enabled = [otherFunctions actionList:availableAVTransportActions containsAction:@"Pause"];
-    self.btnStop.enabled = [otherFunctions actionList:availableAVTransportActions containsAction:@"Stop"];
-    self.btnPrevious.enabled = [otherFunctions actionList:availableAVTransportActions containsAction:@"Previous"];
-    self.btnNext.enabled = [otherFunctions actionList:availableAVTransportActions containsAction:@"Next"];
-    self.slidVolume.enabled = [otherFunctions actionList:availableRenderActions containsAction:@"SetVolume"];
-    self.slidSeek.enabled = [otherFunctions actionList:availableAVTransportActions containsAction:@"Seek"];
+    self.btnPlay.enabled = [OtherFunctions actionList:availableAVTransportActions containsAction:@"Play"];
+    self.btnPause.enabled = [OtherFunctions actionList:availableAVTransportActions containsAction:@"Pause"];
+    self.btnStop.enabled = [OtherFunctions actionList:availableAVTransportActions containsAction:@"Stop"];
+    self.btnPrevious.enabled = [OtherFunctions actionList:availableAVTransportActions containsAction:@"Previous"];
+    self.btnNext.enabled = [OtherFunctions actionList:availableAVTransportActions containsAction:@"Next"];
+    self.slidVolume.enabled = [OtherFunctions actionList:availableRenderActions containsAction:@"SetVolume"];
+    self.slidSeek.enabled = [OtherFunctions actionList:availableAVTransportActions containsAction:@"Seek"];
     
     // set volume
-    if ([otherFunctions actionList:availableRenderActions containsAction:@"GetVolume"])
+    if ([OtherFunctions actionList:availableRenderActions containsAction:@"GetVolume"])
         self.slidVolume.value = [[[Rendering getInstance] getVolume] floatValue];
     
+    /*
     // set volume slider min max
     self.slidVolume.minimumValue = [[[StateVariableRangeList getVolumeMinMax] objectForKey:@"VolumeMin"] floatValue];
     self.slidVolume.maximumValue = [[[StateVariableRangeList getVolumeMinMax] objectForKey:@"VolumeMax"] floatValue];
+     */
+    self.slidVolume.minimumValue = 0;
+    self.slidVolume.maximumValue = 100;
     
     // set track name
     [self updateTrackName];
     
     // set seek slider max value
-    self.slidSeek.maximumValue = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
+    self.slidSeek.maximumValue = [OtherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
     
     // get track time
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(getTrackTimePosition) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(getTrackTimePosition) userInfo:nil repeats:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,7 +101,7 @@
 
 - (void)getTrackTimePosition
 {
-    self.slidSeek.value = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"relTime"]];
+    self.slidSeek.value = [OtherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"relTime"]];
     
     if ((self.slidSeek.value >= self.slidSeek.maximumValue - 1) && !isNext)
     {
@@ -161,12 +165,13 @@
 
 - (IBAction)slidVolume:(UISlider *)sender
 {
-    [[Rendering getInstance] setVolume:[otherFunctions floatIntoString:sender.value]];
+//    [[Rendering getInstance] setVolume:[otherFunctions floatIntoString:sender.value]];
+    [[Rendering getInstance] setVolume:[NSString stringWithFormat:@"%d", (int)sender.value]];
 }
 
 - (IBAction)slidSeek:(UISlider *)sender
 {
-    [[AVTransport getInstance] seekWithMode:@"REL_TIME" andTarget:[otherFunctions floatIntoTimeString:sender.value]];
+    [[AVTransport getInstance] seekWithMode:@"REL_TIME" andTarget:[OtherFunctions floatIntoTimeString:sender.value]];
 }
 
 #pragma mark - other functions
@@ -200,7 +205,7 @@
 - (void)getTrackDuration
 {
     // set seek slider max value
-    self.slidSeek.maximumValue = [otherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
+    self.slidSeek.maximumValue = [OtherFunctions timeStringIntoFloat:[[[AVTransport getInstance] getPositionAndTrackInfo] objectForKey:@"trackDuration"]];
     isNext = NO;
 }
 

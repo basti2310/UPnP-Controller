@@ -8,7 +8,7 @@
 
 #import "Player_TableViewController.h"
 #import "UPnPManager.h"
-#import "otherFunctions.h"
+#import "OtherFunctions.h"
 #import "MediaRenderer1Device.h"
 
 @interface Player_TableViewController ()
@@ -68,7 +68,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [otherFunctions nameOfUPnPDevice:[GLB.upnpRenderer objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [OtherFunctions nameOfUPnPDevice:[GLB.upnpRenderer objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -76,6 +76,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     renderer = [GLB.upnpRenderer objectAtIndex:indexPath.row];
+    NSLog(@"host=%@ port=%@", renderer.baseURL.host, renderer.baseURL.port);
 }
 
 @end

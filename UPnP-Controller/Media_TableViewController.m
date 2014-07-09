@@ -13,7 +13,8 @@
 #import "AVTransport.h"
 #import "Rendering.h"
 #import "ContentDirectory.h"
-#import "otherFunctions.h"
+#import "OtherFunctions.h"
+#import "CocoaTools.h"
 
 @interface Media_TableViewController ()
 
@@ -82,8 +83,19 @@
     else
     {
         cell.textLabel.text = item.title;
-        cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.albumArt]]];
         
+        if (item.albumArt != nil)
+        {
+            NSString *albumArt = [OtherFunctions getURLForAlbumArt:item.albumArt forRenderer:GLB.renderer];
+        
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:albumArt]]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    cell.imageView.image = image;
+                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                });
+            });
+        }
     }
     
     return cell;
@@ -113,8 +125,8 @@
         else
         {
             // only for sonos
-            error = [[AVTransport getInstance] playTrackSonos:(MediaServer1ItemObject *)item withQueue:GLB.currentQueueUri];
-            //error = [[AVTransport getInstance] play:item];
+            //error = [[AVTransport getInstance] playTrackSonos:(MediaServer1ItemObject *)item withQueue:GLB.currentQueueUri];
+            error = [[AVTransport getInstance] play:item];
         }
         
         if (error == 0)
@@ -146,7 +158,8 @@
 
 - (IBAction)btnPlayFolder:(id)sender
 {
-    error = [[AVTransport getInstance] playPlaylist:GLB.currentServerContainerObject];
+    //error = [[AVTransport getInstance] playPlaylist:GLB.currentServerContainerObject];
+    error = [[AVTransport getInstance] playQueueSonos:GLB.currentServerContainerObject withQueue:GLB.currentQueueUri];
     
     if (error == -1)
     {
@@ -162,7 +175,9 @@
     }
     else if (error == 0)
     {
-        GLB.currentServerBasicObject = [playlist objectAtIndex:0];
+        if (playlist.count > 0)
+            GLB.currentServerBasicObject = [playlist objectAtIndex:0];
+        
         GLB.currentPlaylist = playlist;
         GLB.currentTrackNumber = 0;
     }

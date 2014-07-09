@@ -28,7 +28,7 @@
 		404A54D61939DA4B00C97F05 /* Info_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404A54D51939DA4B00C97F05 /* Info_ViewController.m */; };
 		40A2777C1916C88A00A08AC9 /* AVTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277731916C88A00A08AC9 /* AVTransport.m */; };
 		40A2777D1916C88A00A08AC9 /* ContentDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277751916C88A00A08AC9 /* ContentDirectory.m */; };
-		40A2777E1916C88A00A08AC9 /* otherFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277771916C88A00A08AC9 /* otherFunctions.m */; };
+		40A2777E1916C88A00A08AC9 /* OtherFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277771916C88A00A08AC9 /* OtherFunctions.m */; };
 		40A2777F1916C88A00A08AC9 /* Rendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277791916C88A00A08AC9 /* Rendering.m */; };
 		40A277801916C88A00A08AC9 /* Start_Stop_Searching.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A2777B1916C88A00A08AC9 /* Start_Stop_Searching.m */; };
 		40D16AD4193D0B21003AF8D1 /* StateVariableRangeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D16AD3193D0B21003AF8D1 /* StateVariableRangeList.m */; };
@@ -79,8 +79,8 @@
 		40A277731916C88A00A08AC9 /* AVTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVTransport.m; sourceTree = "<group>"; };
 		40A277741916C88A00A08AC9 /* ContentDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDirectory.h; sourceTree = "<group>"; };
 		40A277751916C88A00A08AC9 /* ContentDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDirectory.m; sourceTree = "<group>"; };
-		40A277761916C88A00A08AC9 /* otherFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherFunctions.h; sourceTree = "<group>"; };
-		40A277771916C88A00A08AC9 /* otherFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = otherFunctions.m; sourceTree = "<group>"; };
+		40A277761916C88A00A08AC9 /* OtherFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherFunctions.h; sourceTree = "<group>"; };
+		40A277771916C88A00A08AC9 /* OtherFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherFunctions.m; sourceTree = "<group>"; };
 		40A277781916C88A00A08AC9 /* Rendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rendering.h; sourceTree = "<group>"; };
 		40A277791916C88A00A08AC9 /* Rendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rendering.m; sourceTree = "<group>"; };
 		40A2777A1916C88A00A08AC9 /* Start_Stop_Searching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Start_Stop_Searching.h; sourceTree = "<group>"; };
@@ -222,8 +222,8 @@
 				40A277791916C88A00A08AC9 /* Rendering.m */,
 				40D16AD2193D0B21003AF8D1 /* StateVariableRangeList.h */,
 				40D16AD3193D0B21003AF8D1 /* StateVariableRangeList.m */,
-				40A277761916C88A00A08AC9 /* otherFunctions.h */,
-				40A277771916C88A00A08AC9 /* otherFunctions.m */,
+				40A277761916C88A00A08AC9 /* OtherFunctions.h */,
+				40A277771916C88A00A08AC9 /* OtherFunctions.m */,
 			);
 			name = "UPnP-Classes";
 			path = "../../../../UPnP-Classes";
@@ -341,7 +341,7 @@
 				40F6FA56190D943100462D54 /* RenderControl_ViewController.m in Sources */,
 				40D16AD4193D0B21003AF8D1 /* StateVariableRangeList.m in Sources */,
 				40A277801916C88A00A08AC9 /* Start_Stop_Searching.m in Sources */,
-				40A2777E1916C88A00A08AC9 /* otherFunctions.m in Sources */,
+				40A2777E1916C88A00A08AC9 /* OtherFunctions.m in Sources */,
 				402C9D81190C2C57000ED98F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

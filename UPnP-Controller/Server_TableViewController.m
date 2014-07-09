@@ -8,7 +8,7 @@
 
 #import "Server_TableViewController.h"
 #import "UPnPManager.h"
-#import "otherFunctions.h"
+#import "OtherFunctions.h"
 #import "MediaServer1Device.h"
 #import "ContentDirectory.h"
 
@@ -48,13 +48,11 @@
 {
     GLB.server = server;
     
-    NSArray *queueUris = [[ContentDirectory getInstance] getQueuesOfMediaDirectoryOnServer:GLB.server withRootID:@"0"];
+    //NSArray *queueUris = [[ContentDirectory getInstance] getQueuesOfMediaDirectoryOnServer:GLB.server withRootID:@"0"];
     
-    if (queueUris.count > 0)
-        GLB.currentQueueUri = queueUris[0];
-    
-    NSLog(@"// current queue uri: %@", GLB.currentQueueUri);
-    
+//    if (queueUris.count > 0)
+//        GLB.currentQueueUri = queueUris[0];
+//        
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -76,7 +74,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [otherFunctions nameOfUPnPDevice:[GLB.upnpServers objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [OtherFunctions nameOfUPnPDevice:[GLB.upnpServers objectAtIndex:indexPath.row]];
     
     return cell;
 }
