@@ -25,16 +25,10 @@
 		402C9DC2190C34E8000ED98F /* Init_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C9DC1190C34E8000ED98F /* Init_ViewController.m */; };
 		402C9DC5190C3DAC000ED98F /* Server_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C9DC4190C3DAC000ED98F /* Server_TableViewController.m */; };
 		402C9DCB190C44F1000ED98F /* Player_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C9DCA190C44F1000ED98F /* Player_TableViewController.m */; };
-		404A54D61939DA4B00C97F05 /* Info_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404A54D51939DA4B00C97F05 /* Info_ViewController.m */; };
-		40A2777C1916C88A00A08AC9 /* AVTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277731916C88A00A08AC9 /* AVTransport.m */; };
-		40A2777D1916C88A00A08AC9 /* ContentDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277751916C88A00A08AC9 /* ContentDirectory.m */; };
-		40A2777E1916C88A00A08AC9 /* OtherFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277771916C88A00A08AC9 /* OtherFunctions.m */; };
-		40A2777F1916C88A00A08AC9 /* Rendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A277791916C88A00A08AC9 /* Rendering.m */; };
-		40A277801916C88A00A08AC9 /* Start_Stop_Searching.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A2777B1916C88A00A08AC9 /* Start_Stop_Searching.m */; };
-		40D16AD4193D0B21003AF8D1 /* StateVariableRangeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D16AD3193D0B21003AF8D1 /* StateVariableRangeList.m */; };
-		40F6FA4D190D811800462D54 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F6FA4C190D811800462D54 /* GlobalVars.m */; };
 		40F6FA53190D897E00462D54 /* Media_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F6FA52190D897E00462D54 /* Media_TableViewController.m */; };
-		40F6FA56190D943100462D54 /* RenderControl_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F6FA55190D943100462D54 /* RenderControl_ViewController.m */; };
+		9E0AEB36196E857C00C4B04A /* UPNPDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0AEB35196E857C00C4B04A /* UPNPDiscovery.m */; };
+		9E0AEB39196E8A5600C4B04A /* UPNPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0AEB38196E8A5600C4B04A /* UPNPController.m */; };
+		9ED77094196FE53B0059C4C2 /* SonosUPNPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED77093196FE53B0059C4C2 /* SonosUPNPController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,26 +67,14 @@
 		402C9DC4190C3DAC000ED98F /* Server_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Server_TableViewController.m; path = "UPnP-Controller/Server_TableViewController.m"; sourceTree = SOURCE_ROOT; };
 		402C9DC9190C44F1000ED98F /* Player_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player_TableViewController.h; sourceTree = "<group>"; };
 		402C9DCA190C44F1000ED98F /* Player_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player_TableViewController.m; sourceTree = "<group>"; };
-		404A54D41939DA4B00C97F05 /* Info_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Info_ViewController.h; sourceTree = "<group>"; };
-		404A54D51939DA4B00C97F05 /* Info_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Info_ViewController.m; sourceTree = "<group>"; };
-		40A277721916C88A00A08AC9 /* AVTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTransport.h; sourceTree = "<group>"; };
-		40A277731916C88A00A08AC9 /* AVTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVTransport.m; sourceTree = "<group>"; };
-		40A277741916C88A00A08AC9 /* ContentDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDirectory.h; sourceTree = "<group>"; };
-		40A277751916C88A00A08AC9 /* ContentDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDirectory.m; sourceTree = "<group>"; };
-		40A277761916C88A00A08AC9 /* OtherFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherFunctions.h; sourceTree = "<group>"; };
-		40A277771916C88A00A08AC9 /* OtherFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherFunctions.m; sourceTree = "<group>"; };
-		40A277781916C88A00A08AC9 /* Rendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rendering.h; sourceTree = "<group>"; };
-		40A277791916C88A00A08AC9 /* Rendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rendering.m; sourceTree = "<group>"; };
-		40A2777A1916C88A00A08AC9 /* Start_Stop_Searching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Start_Stop_Searching.h; sourceTree = "<group>"; };
-		40A2777B1916C88A00A08AC9 /* Start_Stop_Searching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Start_Stop_Searching.m; sourceTree = "<group>"; };
-		40D16AD2193D0B21003AF8D1 /* StateVariableRangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateVariableRangeList.h; sourceTree = "<group>"; };
-		40D16AD3193D0B21003AF8D1 /* StateVariableRangeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateVariableRangeList.m; sourceTree = "<group>"; };
-		40F6FA4B190D811800462D54 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
-		40F6FA4C190D811800462D54 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
 		40F6FA51190D897E00462D54 /* Media_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media_TableViewController.h; sourceTree = "<group>"; };
 		40F6FA52190D897E00462D54 /* Media_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media_TableViewController.m; sourceTree = "<group>"; };
-		40F6FA54190D943100462D54 /* RenderControl_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderControl_ViewController.h; sourceTree = "<group>"; };
-		40F6FA55190D943100462D54 /* RenderControl_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderControl_ViewController.m; sourceTree = "<group>"; };
+		9E0AEB34196E857C00C4B04A /* UPNPDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UPNPDiscovery.h; path = ../UPNPDiscovery.h; sourceTree = "<group>"; };
+		9E0AEB35196E857C00C4B04A /* UPNPDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UPNPDiscovery.m; path = ../UPNPDiscovery.m; sourceTree = "<group>"; };
+		9E0AEB37196E8A5600C4B04A /* UPNPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UPNPController.h; path = ../UPNPController.h; sourceTree = "<group>"; };
+		9E0AEB38196E8A5600C4B04A /* UPNPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UPNPController.m; path = ../UPNPController.m; sourceTree = "<group>"; };
+		9ED77092196FE53B0059C4C2 /* SonosUPNPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SonosUPNPController.h; path = ../SonosUPNPController.h; sourceTree = "<group>"; };
+		9ED77093196FE53B0059C4C2 /* SonosUPNPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SonosUPNPController.m; path = ../SonosUPNPController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,11 +138,9 @@
 		402C9D7A190C2C57000ED98F /* UPnP-Controller */ = {
 			isa = PBXGroup;
 			children = (
-				40A277711916C88A00A08AC9 /* UPnP-Classes */,
+				40A277711916C88A00A08AC9 /* UPnP */,
 				402C9D83190C2C57000ED98F /* AppDelegate.h */,
 				402C9D84190C2C57000ED98F /* AppDelegate.m */,
-				40F6FA4B190D811800462D54 /* GlobalVars.h */,
-				40F6FA4C190D811800462D54 /* GlobalVars.m */,
 				402C9DB1190C2D03000ED98F /* Storyboard.storyboard */,
 				402C9DC0190C34E8000ED98F /* Init_ViewController.h */,
 				402C9DC1190C34E8000ED98F /* Init_ViewController.m */,
@@ -170,10 +150,6 @@
 				402C9DCA190C44F1000ED98F /* Player_TableViewController.m */,
 				40F6FA51190D897E00462D54 /* Media_TableViewController.h */,
 				40F6FA52190D897E00462D54 /* Media_TableViewController.m */,
-				40F6FA54190D943100462D54 /* RenderControl_ViewController.h */,
-				40F6FA55190D943100462D54 /* RenderControl_ViewController.m */,
-				404A54D41939DA4B00C97F05 /* Info_ViewController.h */,
-				404A54D51939DA4B00C97F05 /* Info_ViewController.m */,
 				402C9D86190C2C57000ED98F /* Images.xcassets */,
 				402C9D7B190C2C57000ED98F /* Supporting Files */,
 			);
@@ -209,23 +185,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		40A277711916C88A00A08AC9 /* UPnP-Classes */ = {
+		40A277711916C88A00A08AC9 /* UPnP */ = {
 			isa = PBXGroup;
 			children = (
-				40A2777A1916C88A00A08AC9 /* Start_Stop_Searching.h */,
-				40A2777B1916C88A00A08AC9 /* Start_Stop_Searching.m */,
-				40A277721916C88A00A08AC9 /* AVTransport.h */,
-				40A277731916C88A00A08AC9 /* AVTransport.m */,
-				40A277741916C88A00A08AC9 /* ContentDirectory.h */,
-				40A277751916C88A00A08AC9 /* ContentDirectory.m */,
-				40A277781916C88A00A08AC9 /* Rendering.h */,
-				40A277791916C88A00A08AC9 /* Rendering.m */,
-				40D16AD2193D0B21003AF8D1 /* StateVariableRangeList.h */,
-				40D16AD3193D0B21003AF8D1 /* StateVariableRangeList.m */,
-				40A277761916C88A00A08AC9 /* OtherFunctions.h */,
-				40A277771916C88A00A08AC9 /* OtherFunctions.m */,
+				9E0AEB34196E857C00C4B04A /* UPNPDiscovery.h */,
+				9E0AEB35196E857C00C4B04A /* UPNPDiscovery.m */,
+				9E0AEB37196E8A5600C4B04A /* UPNPController.h */,
+				9E0AEB38196E8A5600C4B04A /* UPNPController.m */,
+				9ED77092196FE53B0059C4C2 /* SonosUPNPController.h */,
+				9ED77093196FE53B0059C4C2 /* SonosUPNPController.m */,
 			);
-			name = "UPnP-Classes";
+			name = UPnP;
 			path = "../../../../UPnP-Classes";
 			sourceTree = "<group>";
 		};
@@ -328,20 +298,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40F6FA4D190D811800462D54 /* GlobalVars.m in Sources */,
-				40A2777C1916C88A00A08AC9 /* AVTransport.m in Sources */,
-				404A54D61939DA4B00C97F05 /* Info_ViewController.m in Sources */,
 				402C9D85190C2C57000ED98F /* AppDelegate.m in Sources */,
 				402C9DCB190C44F1000ED98F /* Player_TableViewController.m in Sources */,
-				40A2777F1916C88A00A08AC9 /* Rendering.m in Sources */,
+				9E0AEB36196E857C00C4B04A /* UPNPDiscovery.m in Sources */,
 				40F6FA53190D897E00462D54 /* Media_TableViewController.m in Sources */,
 				402C9DC2190C34E8000ED98F /* Init_ViewController.m in Sources */,
+				9ED77094196FE53B0059C4C2 /* SonosUPNPController.m in Sources */,
 				402C9DC5190C3DAC000ED98F /* Server_TableViewController.m in Sources */,
-				40A2777D1916C88A00A08AC9 /* ContentDirectory.m in Sources */,
-				40F6FA56190D943100462D54 /* RenderControl_ViewController.m in Sources */,
-				40D16AD4193D0B21003AF8D1 /* StateVariableRangeList.m in Sources */,
-				40A277801916C88A00A08AC9 /* Start_Stop_Searching.m in Sources */,
-				40A2777E1916C88A00A08AC9 /* OtherFunctions.m in Sources */,
+				9E0AEB39196E8A5600C4B04A /* UPNPController.m in Sources */,
 				402C9D81190C2C57000ED98F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

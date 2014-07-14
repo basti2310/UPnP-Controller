@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaServer1BasicObject.h"
+#import "MediaServer1Device.h"
+#import "MediaRenderer1Device.h"
+//#import "UPnPController.h"
+#import "SonosUPnPController.h"
 
 @interface Media_TableViewController : UITableViewController
 
 @property (nonatomic, strong) NSString *rootID;
 @property (nonatomic, strong) NSString *header;
+
+@property (nonatomic, strong) NSString *queueUri;
+
+@property (nonatomic, strong) SonosUPNPController *upnpCon;
 
 @end

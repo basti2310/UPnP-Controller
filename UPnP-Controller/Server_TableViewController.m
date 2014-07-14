@@ -7,10 +7,7 @@
 //
 
 #import "Server_TableViewController.h"
-#import "UPnPManager.h"
-#import "OtherFunctions.h"
-#import "MediaServer1Device.h"
-#import "ContentDirectory.h"
+#import "BasicUPnPDevice.h"
 
 @interface Server_TableViewController ()
 
@@ -18,7 +15,7 @@
 
 @implementation Server_TableViewController
 {
-    MediaServer1Device *server;
+    int index;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -46,13 +43,7 @@
 
 - (IBAction)btnDone:(id)sender
 {
-    GLB.server = server;
-    
-    //NSArray *queueUris = [[ContentDirectory getInstance] getQueuesOfMediaDirectoryOnServer:GLB.server withRootID:@"0"];
-    
-//    if (queueUris.count > 0)
-//        GLB.currentQueueUri = queueUris[0];
-//        
+    self.server = self.servers[index];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -67,21 +58,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return GLB.upnpServers.count;
+    return self.servers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [OtherFunctions nameOfUPnPDevice:[GLB.upnpServers objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [(BasicUPnPDevice *)self.servers[indexPath.row] friendlyName];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    server = [GLB.upnpServers objectAtIndex:indexPath.row];
+    index = (int)indexPath.row;
 }
 
 @end

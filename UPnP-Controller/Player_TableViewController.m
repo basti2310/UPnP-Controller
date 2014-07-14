@@ -7,9 +7,8 @@
 //
 
 #import "Player_TableViewController.h"
-#import "UPnPManager.h"
-#import "OtherFunctions.h"
-#import "MediaRenderer1Device.h"
+#include "BasicUPnPDevice.h"
+
 
 @interface Player_TableViewController ()
 
@@ -17,7 +16,7 @@
 
 @implementation Player_TableViewController
 {
-    MediaRenderer1Device *renderer;
+    int index;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -45,8 +44,7 @@
 
 - (IBAction)btnDone:(id)sender
 {
-    GLB.renderer = renderer;
-    
+    self.renderer = self.renderers[index];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -61,22 +59,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return GLB.upnpRenderer.count;
+    return self.renderers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [OtherFunctions nameOfUPnPDevice:[GLB.upnpRenderer objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [(BasicUPnPDevice *)self.renderers[indexPath.row] friendlyName];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    renderer = [GLB.upnpRenderer objectAtIndex:indexPath.row];
-    NSLog(@"host=%@ port=%@", renderer.baseURL.host, renderer.baseURL.port);
+    index = (int)indexPath.row;
 }
 
 @end

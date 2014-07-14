@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaServer1BasicObject.h"
 
 @interface Init_ViewController : UIViewController
 

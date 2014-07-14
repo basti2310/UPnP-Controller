@@ -7,14 +7,10 @@
 //
 
 #import "Media_TableViewController.h"
-#import "MediaServerBasicObjectParser.h"
-#import "MediaServer1ItemObject.h"
-#import "MediaServer1ContainerObject.h"
-#import "AVTransport.h"
-#import "Rendering.h"
-#import "ContentDirectory.h"
-#import "OtherFunctions.h"
-#import "CocoaTools.h"
+#import "SonosUPNPController.h"
+//#import "UPNPController.h"
+#import "Init_ViewController.h"
+
 
 @interface Media_TableViewController ()
 
@@ -22,8 +18,10 @@
 
 @implementation Media_TableViewController
 {
+    MediaServer1BasicObject *selectedObject;
+    
     NSArray *playlist;
-    MediaServer1ContainerObject *container;
+    
     int error;
 }
 
@@ -40,14 +38,9 @@
 {
     [super viewDidLoad];
     
-    // header
-    self.title = self.header;
+    playlist = [self.upnpCon browseContentForRootID:self.rootID];
     
-    // set server and renderer
-    [[AVTransport getInstance] setRenderer:GLB.renderer andServer:GLB.server];
-
-    // browse content
-    playlist = [[ContentDirectory getInstance] browseContentWithDevice:GLB.server andRootID:self.rootID];    
+    self.title = self.header;
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,42 +96,41 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MediaServer1BasicObject *item = [playlist objectAtIndex:indexPath.row];
+    selectedObject = [playlist objectAtIndex:indexPath.row];
     
-    if (item.isContainer)
+    if (selectedObject.isContainer)
     {
-        container = [playlist objectAtIndex:indexPath.row];
-        
-        GLB.currentServerContainerObject = container;
-        
+        self.upnpCon.currentBasicObject = selectedObject;
         [self performSegueWithIdentifier:@"newfolder" sender:self];
     }
     else
     {
-        NSRange range = [[(MediaServer1ItemObject *)item uri] rangeOfString:@"x-sonosapi-stream:" options:NSCaseInsensitiveSearch];
-        
-        if(range.location == 0)
+        if ([self.upnpCon isObjectRadio:selectedObject])
         {
-            error = [[AVTransport getInstance] playRadio:(MediaServer1ItemObject *)item];
-            NSLog(@"// play radio");
+            error = [self.upnpCon playRadio:(MediaServer1ItemObject *)selectedObject];
+            if (error == 1) NSLog(@"no renderer or server");
+            else if (error == 2) NSLog(@"render can not play object with this uri");
+            else if (error == 3) NSLog(@"no uri for item");
+            else if (error == 4) NSLog(@"not meta data for radio");
         }
         else
         {
-            // only for sonos
-            //error = [[AVTransport getInstance] playTrackSonos:(MediaServer1ItemObject *)item withQueue:GLB.currentQueueUri];
-            error = [[AVTransport getInstance] play:item];
+            /*
+            error = [self.upnpCon play:selectedObject];
+            if (error == 1) NSLog(@"no renderer or server");
+            else if (error == 2) NSLog(@"use other function");
+            else if (error == 3) NSLog(@"no uri for item");
+            else if (error == 4) NSLog(@"false protocol type for uri");
+             */
+            
+            error = [self.upnpCon play:selectedObject withQueueUri:self.queueUri];
+            if (error == 1) NSLog(@"no renderer or server");
+            else if (error == 2) NSLog(@"render can not play object with this uri");
+            else if (error == 3) NSLog(@"no uri for queue");
+            else if (error == 4) NSLog(@"false protocol type for uri");
         }
         
-        if (error == 0)
-        {
-            GLB.currentServerBasicObject = item;
-            GLB.currentPlaylist = playlist;
-            GLB.currentTrackNumber = (int)indexPath.row;
-        }
-        else if (error == -1)
-        {
-            NSLog(@"no playlist, renderer or server");
-        }
+        self.upnpCon.currentBasicObject = selectedObject;
     }
 }
 
@@ -148,9 +140,11 @@
 {
     if ([segue.identifier isEqualToString:@"newfolder"])
     {
-        Media_TableViewController *controller = segue.destinationViewController;
-        controller.rootID = container.objectID;
-        controller.header = container.title;
+        Media_TableViewController *controllerMedia = segue.destinationViewController;
+        controllerMedia.header = selectedObject.title;
+        controllerMedia.rootID = selectedObject.objectID;
+        controllerMedia.upnpCon = self.upnpCon;
+        controllerMedia.queueUri = self.queueUri;
     }
 }
 
@@ -158,28 +152,19 @@
 
 - (IBAction)btnPlayFolder:(id)sender
 {
-    error = [[AVTransport getInstance] playPlaylist:GLB.currentServerContainerObject];
-    //error = [[AVTransport getInstance] playQueueSonos:GLB.currentServerContainerObject withQueue:GLB.currentQueueUri];
-    
-    if (error == -1)
+    if (self.upnpCon.currentBasicObject.isContainer)
     {
-        NSLog(@"no renderer or server");
-    }
-    else if (error == 1)
-    {
-        NSLog(@"false uri");
-    }
-    else if (error == 2)
-    {
-        NSLog(@"no uri");
-    }
-    else if (error == 0)
-    {
-        if (playlist.count > 0)
-            GLB.currentServerBasicObject = [playlist objectAtIndex:0];
+        /*
+        error = [self.upnpCon playFolderPlaylist:(MediaServer1ContainerObject *)self.upnpCon.currentBasicObject];
+        if (error == 1) NSLog(@"no renderer or server");
+        else if (error == 2) NSLog(@"render can not play object with this uri");
+        else if (error == 3) NSLog(@"no uri for folder");
+         */
         
-        GLB.currentPlaylist = playlist;
-        GLB.currentTrackNumber = 0;
+        error = [self.upnpCon playPlaylistOrQueue:(MediaServer1ContainerObject *)self.upnpCon.currentBasicObject withQueueUri:self.queueUri];
+        if (error == 1) NSLog(@"no renderer or server");
+        else if (error == 2) NSLog(@"render can not play object with this uri");
+        else if (error == 3) NSLog(@"no uri for queue");
     }
 }
 

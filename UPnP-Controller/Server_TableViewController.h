@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaServer1Device.h"
 
 @interface Server_TableViewController : UITableViewController
+
+@property (nonatomic, strong) NSArray *servers;
+@property (nonatomic, strong) MediaServer1Device *server;
 
 @end
