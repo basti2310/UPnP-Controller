@@ -45,7 +45,7 @@
 - (IBAction)btnDone:(id)sender
 {
     self.renderer = self.renderers[index];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

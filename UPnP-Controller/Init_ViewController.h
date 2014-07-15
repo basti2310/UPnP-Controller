@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MediaServer1BasicObject.h"
+#import "SonosUPNPController.h"
+#import "UPNPDiscovery.h"
 
 @interface Init_ViewController : UIViewController
+
+@property (nonatomic, strong) UPNPController *upnpCon;
+@property (nonatomic, strong) UPNPDiscovery *upnpDisc;
+
+@property (nonatomic) BOOL controllerTag;
 
 @end

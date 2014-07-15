@@ -44,7 +44,7 @@
 - (IBAction)btnDone:(id)sender
 {
     self.server = self.servers[index];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

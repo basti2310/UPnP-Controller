@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Y0t-hQ-hz9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2au-7s-MUs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -161,6 +161,11 @@
                                 <action selector="btnRefresh:" destination="8yW-MU-875" id="Opq-Gy-Y2W"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="wählen" id="VQV-8u-Ten">
+                            <connections>
+                                <segue destination="2au-7s-MUs" kind="modal" identifier="controllerwahl" id="xyh-eV-ZwT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="btnPlayPause" destination="qBY-vq-GYX" id="AZX-XC-ZQD"/>
@@ -177,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJs-lH-WQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="110"/>
+            <point key="canvasLocation" x="1393" y="110"/>
         </scene>
         <!--Player Table View Controller - Player-->
         <scene sceneID="Kdw-1J-0gO">
@@ -212,7 +217,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sP-mC-SAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="496"/>
+            <point key="canvasLocation" x="1928" y="496"/>
         </scene>
         <!--Media Table View Controller-->
         <scene sceneID="Jfd-qn-b4p">
@@ -258,7 +263,7 @@
                     </connections>
                 </button>
             </objects>
-            <point key="canvasLocation" x="1887" y="-316"/>
+            <point key="canvasLocation" x="2413" y="-316"/>
         </scene>
         <!--Server Table View Controller - Quelle-->
         <scene sceneID="FOG-jb-3pp">
@@ -293,25 +298,76 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKQ-p7-j6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="-316"/>
+            <point key="canvasLocation" x="1928" y="-316"/>
+        </scene>
+        <!--Controller Wahl View Controller - Controller auswählen-->
+        <scene sceneID="eEV-R4-GMi">
+            <objects>
+                <viewController id="6fh-ab-Tnb" customClass="ControllerWahl_ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WBI-D0-feI"/>
+                        <viewControllerLayoutGuide type="bottom" id="vlc-Wd-Qls"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="62k-Li-khT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMJ-sF-YoM">
+                                <rect key="frame" x="84" y="118" width="152" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Controller 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnChooseServer:" destination="8yW-MU-875" eventType="touchUpInside" id="G5N-X9-Qtf"/>
+                                    <action selector="btnController1:" destination="6fh-ab-Tnb" eventType="touchUpInside" id="RfZ-9r-vIN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlf-Dw-64t">
+                                <rect key="frame" x="84" y="212" width="152" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Controller 2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnChooseServer:" destination="8yW-MU-875" eventType="touchUpInside" id="vtW-8U-94e"/>
+                                    <action selector="btnController2:" destination="6fh-ab-Tnb" eventType="touchUpInside" id="9mj-xQ-69b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Controller auswählen" id="osn-FR-Nfn"/>
+                    <connections>
+                        <segue destination="8yW-MU-875" kind="push" identifier="controller" id="ToS-d7-Scv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BbF-CV-WlD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="929" y="110"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="zY3-zc-3rc">
+        <scene sceneID="b1u-3g-CmA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y0t-hQ-hz9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2au-7s-MUs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zFu-T3-mPD">
+                    <navigationItem key="navigationItem" id="s2W-1e-9Hp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ux0-gf-DPR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="8yW-MU-875" kind="relationship" relationship="rootViewController" id="4iI-Xw-iTW"/>
+                        <segue destination="6fh-ab-Tnb" kind="relationship" relationship="rootViewController" id="F0N-7M-Hmo"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xk8-gp-8Yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ol6-Su-ALL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341" y="110"/>
+            <point key="canvasLocation" x="435" y="110"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

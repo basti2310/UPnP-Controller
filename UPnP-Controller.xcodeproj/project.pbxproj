@@ -26,9 +26,10 @@
 		402C9DC5190C3DAC000ED98F /* Server_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C9DC4190C3DAC000ED98F /* Server_TableViewController.m */; };
 		402C9DCB190C44F1000ED98F /* Player_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402C9DCA190C44F1000ED98F /* Player_TableViewController.m */; };
 		40F6FA53190D897E00462D54 /* Media_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F6FA52190D897E00462D54 /* Media_TableViewController.m */; };
-		9E0AEB36196E857C00C4B04A /* UPNPDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0AEB35196E857C00C4B04A /* UPNPDiscovery.m */; };
-		9E0AEB39196E8A5600C4B04A /* UPNPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0AEB38196E8A5600C4B04A /* UPNPController.m */; };
-		9ED77094196FE53B0059C4C2 /* SonosUPNPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED77093196FE53B0059C4C2 /* SonosUPNPController.m */; };
+		9E288F5F1973D2CF00232840 /* SonosUPNPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E288F5A1973D2CF00232840 /* SonosUPNPController.m */; };
+		9E288F601973D2CF00232840 /* UPNPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E288F5C1973D2CF00232840 /* UPNPController.m */; };
+		9E288F611973D2CF00232840 /* UPNPDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E288F5E1973D2CF00232840 /* UPNPDiscovery.m */; };
+		9E288F641973D67700232840 /* ControllerWahl_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E288F631973D67700232840 /* ControllerWahl_ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,12 +70,14 @@
 		402C9DCA190C44F1000ED98F /* Player_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player_TableViewController.m; sourceTree = "<group>"; };
 		40F6FA51190D897E00462D54 /* Media_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media_TableViewController.h; sourceTree = "<group>"; };
 		40F6FA52190D897E00462D54 /* Media_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media_TableViewController.m; sourceTree = "<group>"; };
-		9E0AEB34196E857C00C4B04A /* UPNPDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UPNPDiscovery.h; path = ../UPNPDiscovery.h; sourceTree = "<group>"; };
-		9E0AEB35196E857C00C4B04A /* UPNPDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UPNPDiscovery.m; path = ../UPNPDiscovery.m; sourceTree = "<group>"; };
-		9E0AEB37196E8A5600C4B04A /* UPNPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UPNPController.h; path = ../UPNPController.h; sourceTree = "<group>"; };
-		9E0AEB38196E8A5600C4B04A /* UPNPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UPNPController.m; path = ../UPNPController.m; sourceTree = "<group>"; };
-		9ED77092196FE53B0059C4C2 /* SonosUPNPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SonosUPNPController.h; path = ../SonosUPNPController.h; sourceTree = "<group>"; };
-		9ED77093196FE53B0059C4C2 /* SonosUPNPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SonosUPNPController.m; path = ../SonosUPNPController.m; sourceTree = "<group>"; };
+		9E288F591973D2CF00232840 /* SonosUPNPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosUPNPController.h; sourceTree = "<group>"; };
+		9E288F5A1973D2CF00232840 /* SonosUPNPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosUPNPController.m; sourceTree = "<group>"; };
+		9E288F5B1973D2CF00232840 /* UPNPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPNPController.h; sourceTree = "<group>"; };
+		9E288F5C1973D2CF00232840 /* UPNPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPNPController.m; sourceTree = "<group>"; };
+		9E288F5D1973D2CF00232840 /* UPNPDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPNPDiscovery.h; sourceTree = "<group>"; };
+		9E288F5E1973D2CF00232840 /* UPNPDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPNPDiscovery.m; sourceTree = "<group>"; };
+		9E288F621973D67700232840 /* ControllerWahl_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerWahl_ViewController.h; sourceTree = "<group>"; };
+		9E288F631973D67700232840 /* ControllerWahl_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerWahl_ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				402C9D83190C2C57000ED98F /* AppDelegate.h */,
 				402C9D84190C2C57000ED98F /* AppDelegate.m */,
 				402C9DB1190C2D03000ED98F /* Storyboard.storyboard */,
+				9E288F621973D67700232840 /* ControllerWahl_ViewController.h */,
+				9E288F631973D67700232840 /* ControllerWahl_ViewController.m */,
 				402C9DC0190C34E8000ED98F /* Init_ViewController.h */,
 				402C9DC1190C34E8000ED98F /* Init_ViewController.m */,
 				402C9DC3190C3DAC000ED98F /* Server_TableViewController.h */,
@@ -188,12 +193,12 @@
 		40A277711916C88A00A08AC9 /* UPnP */ = {
 			isa = PBXGroup;
 			children = (
-				9E0AEB34196E857C00C4B04A /* UPNPDiscovery.h */,
-				9E0AEB35196E857C00C4B04A /* UPNPDiscovery.m */,
-				9E0AEB37196E8A5600C4B04A /* UPNPController.h */,
-				9E0AEB38196E8A5600C4B04A /* UPNPController.m */,
-				9ED77092196FE53B0059C4C2 /* SonosUPNPController.h */,
-				9ED77093196FE53B0059C4C2 /* SonosUPNPController.m */,
+				9E288F5D1973D2CF00232840 /* UPNPDiscovery.h */,
+				9E288F5E1973D2CF00232840 /* UPNPDiscovery.m */,
+				9E288F5B1973D2CF00232840 /* UPNPController.h */,
+				9E288F5C1973D2CF00232840 /* UPNPController.m */,
+				9E288F591973D2CF00232840 /* SonosUPNPController.h */,
+				9E288F5A1973D2CF00232840 /* SonosUPNPController.m */,
 			);
 			name = UPnP;
 			path = "../../../../UPnP-Classes";
@@ -299,13 +304,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				402C9D85190C2C57000ED98F /* AppDelegate.m in Sources */,
+				9E288F5F1973D2CF00232840 /* SonosUPNPController.m in Sources */,
+				9E288F601973D2CF00232840 /* UPNPController.m in Sources */,
 				402C9DCB190C44F1000ED98F /* Player_TableViewController.m in Sources */,
-				9E0AEB36196E857C00C4B04A /* UPNPDiscovery.m in Sources */,
+				9E288F611973D2CF00232840 /* UPNPDiscovery.m in Sources */,
 				40F6FA53190D897E00462D54 /* Media_TableViewController.m in Sources */,
+				9E288F641973D67700232840 /* ControllerWahl_ViewController.m in Sources */,
 				402C9DC2190C34E8000ED98F /* Init_ViewController.m in Sources */,
-				9ED77094196FE53B0059C4C2 /* SonosUPNPController.m in Sources */,
 				402C9DC5190C3DAC000ED98F /* Server_TableViewController.m in Sources */,
-				9E0AEB39196E8A5600C4B04A /* UPNPController.m in Sources */,
 				402C9D81190C2C57000ED98F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

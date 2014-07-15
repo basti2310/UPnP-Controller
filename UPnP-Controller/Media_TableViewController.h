@@ -18,8 +18,8 @@
 @property (nonatomic, strong) NSString *rootID;
 @property (nonatomic, strong) NSString *header;
 
-@property (nonatomic, strong) NSString *queueUri;
+@property (nonatomic, strong) UPNPController *upnpCon;
 
-@property (nonatomic, strong) SonosUPNPController *upnpCon;
+@property (nonatomic) int deviceType;
 
 @end
