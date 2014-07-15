@@ -9,7 +9,6 @@
 #import "ControllerWahl_ViewController.h"
 #import "Init_ViewController.h"
 #import "UPNPController.h"
-#import "SonosUPNPController.h"
 #import "UPNPDiscovery.h"
 
 

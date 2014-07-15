@@ -9,6 +9,7 @@
 #import "Media_TableViewController.h"
 #import "UPNPController.h"
 #import "Init_ViewController.h"
+#import "SonosUPNPController.h"
 
 
 @interface Media_TableViewController ()
@@ -104,7 +105,7 @@
     }
     else
     {
-        if ([self.upnpCon isKindOfClass:SonosUPNPController.class] && [(SonosUPNPController *)self.upnpCon isObjectRadio:selectedObject])
+        if ([self.upnpCon isKindOfClass:SonosUPNPController.class] && [SonosUPNPController canPlayRadio:selectedObject])
         {
             error = [(SonosUPNPController *)self.upnpCon playRadio:(MediaServer1ItemObject *)selectedObject];
             if (error == 1) NSLog(@"no renderer or server");
@@ -152,7 +153,7 @@
 - (IBAction)btnPlayFolder:(id)sender
 {
     
-/////////////////////
+// TODO: play folder
     
     if (self.upnpCon.currentBasicObject.isContainer && [self.upnpCon isKindOfClass:SonosUPNPController.class])
     {

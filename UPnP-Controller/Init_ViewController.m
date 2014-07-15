@@ -88,7 +88,7 @@ static UPNPController *upnpCon2;
     if (newServerOrRenderer)
     {
         newServerOrRenderer = NO;
-        self.upnpCon = [[SonosUPNPController alloc] initWithRenderer:controllerPlayer.renderer andServer:controllerServer.server];
+        self.upnpCon = [[UPNPController alloc] initWithRenderer:controllerPlayer.renderer andServer:controllerServer.server];
     }
     
     self.lblQuelle.text = controllerServer.server.friendlyName;
@@ -121,13 +121,13 @@ static UPNPController *upnpCon2;
     
     if (![[trackInf valueForKey:@"trackDuration"] isEqualToString:@"NOT_IMPLEMENTED"])
     {
-        self.sliderSeek.maximumValue = (float)[self.upnpCon timeStringIntoInt:[trackInf valueForKey:@"trackDuration"]];
+        self.sliderSeek.maximumValue = (float)[UPNPController timeStringIntoInt:[trackInf valueForKey:@"trackDuration"]];
     }
     
     // get the current slider values
     if (![[trackInf valueForKey:@"relTime"] isEqualToString:@"NOT_IMPLEMENTED"])
     {
-        self.sliderSeek.value = (float)[self.upnpCon timeStringIntoInt:[trackInf valueForKey:@"relTime"]];
+        self.sliderSeek.value = (float)[UPNPController timeStringIntoInt:[trackInf valueForKey:@"relTime"]];
     }
     
     self.sliderVolume.value = [[self.upnpCon getVolumeForChannel:@"Master"] floatValue];
@@ -139,9 +139,9 @@ static UPNPController *upnpCon2;
     }
     
     // device type
-    if ([self.upnpCon deviceType:controllerServer.server] == [self.upnpCon deviceType:controllerPlayer.renderer])
+    if ([UPNPController deviceType:controllerServer.server] == [UPNPController deviceType:controllerPlayer.renderer])
     {
-        deviceType = [self.upnpCon deviceType:controllerPlayer.renderer];
+        deviceType = [UPNPController deviceType:controllerPlayer.renderer];
     }
 }
 
@@ -229,7 +229,7 @@ static UPNPController *upnpCon2;
 
 - (IBAction)sliderSeek:(UISlider *)sender
 {
-    NSString *timeStr = [self.upnpCon intIntoTimeString:(int)sender.value];
+    NSString *timeStr = [UPNPController intIntoTimeString:(int)sender.value];
     
     error = [self.upnpCon seekWithMode:@"REL_TIME" andTarget:timeStr];
     if (error == 1) NSLog(@"no renderer");
@@ -237,7 +237,7 @@ static UPNPController *upnpCon2;
 
 - (IBAction)sliderVolume:(UISlider *)sender
 {
-    error = [self.upnpCon setVolume:[NSString stringWithFormat:@"%d", (int)sender.value] forChannel:@"Master"];
+    error = [self.upnpCon setVolume:(int)sender.value forChannel:@"Master"];
     if (error == 1) NSLog(@"no renderer");
 }
 
@@ -286,7 +286,7 @@ static UPNPController *upnpCon2;
     if (trackInf == nil) NSLog(@"no renderer");
     
     // get the current slider values
-    self.sliderSeek.value = (float)[self.upnpCon timeStringIntoInt:[trackInf valueForKey:@"relTime"]];
+    self.sliderSeek.value = (float)[UPNPController timeStringIntoInt:[trackInf valueForKey:@"relTime"]];
 }
 
 @end

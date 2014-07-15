@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MediaServer1BasicObject.h"
-#import "SonosUPNPController.h"
 #import "UPNPDiscovery.h"
+#import "UPNPController.h"
 
 @interface Init_ViewController : UIViewController
 

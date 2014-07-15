@@ -10,8 +10,7 @@
 #import "MediaServer1BasicObject.h"
 #import "MediaServer1Device.h"
 #import "MediaRenderer1Device.h"
-//#import "UPnPController.h"
-#import "SonosUPnPController.h"
+#import "UPnPController.h"
 
 @interface Media_TableViewController : UITableViewController
 

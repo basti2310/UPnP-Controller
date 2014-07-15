@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SonosUPNPController.h"
-#import "UPNPDiscovery.h"
+
 
 @interface ControllerWahl_ViewController : UIViewController
 
