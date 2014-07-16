@@ -22,7 +22,7 @@
     
     NSArray *playlist;
     
-    int error;
+    UPNP_Error error;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -105,29 +105,20 @@
     }
     else
     {
-        if ([self.upnpCon isKindOfClass:SonosUPNPController.class] && [SonosUPNPController canPlayRadio:selectedObject])
+        if ([SonosUPNPController canPlayRadio:selectedObject] && (self.deviceType == UPNPRendererType_Sonos))
         {
             error = [(SonosUPNPController *)self.upnpCon playRadio:(MediaServer1ItemObject *)selectedObject];
-            if (error == 1) NSLog(@"no renderer or server");
-            else if (error == 2) NSLog(@"render can not play object with this uri");
-            else if (error == 3) NSLog(@"no uri for item");
-            else if (error == 4) NSLog(@"not meta data for radio");
+            [SonosUPNPController upnpErrorLog:error];
         }
         else if (self.deviceType == UPNPRendererType_Generic)
         {
             error = [self.upnpCon play:selectedObject];
-            if (error == 1) NSLog(@"no renderer or server");
-            else if (error == 2) NSLog(@"render can not play object with this uri");
-            else if (error == 3) NSLog(@"no uri for queue");
-            else if (error == 4) NSLog(@"false protocol type for uri");
+            [UPNPController upnpErrorLog:error];
         }
         else if (self.deviceType == UPNPRendererType_Sonos)
         {
             error = [(SonosUPNPController *)self.upnpCon playItemWithQueue:selectedObject];
-            if (error == 1) NSLog(@"no renderer or server");
-            else if (error == 2) NSLog(@"render can not play object with this uri");
-            else if (error == 3) NSLog(@"no uri for item");
-            else if (error == 4) NSLog(@"no uri for queue");
+            [SonosUPNPController upnpErrorLog:error];
         }
     
         self.upnpCon.currentBasicObject = selectedObject;
@@ -152,22 +143,18 @@
 
 - (IBAction)btnPlayFolder:(id)sender
 {
-    
-// TODO: play folder
-    
-    if (self.upnpCon.currentBasicObject.isContainer && [self.upnpCon isKindOfClass:SonosUPNPController.class])
+    if (self.upnpCon.currentBasicObject.isContainer)
     {
-        /*
-        error = [self.upnpCon playFolderPlaylist:(MediaServer1ContainerObject *)self.upnpCon.currentBasicObject];
-        if (error == 1) NSLog(@"no renderer or server");
-        else if (error == 2) NSLog(@"render can not play object with this uri");
-        else if (error == 3) NSLog(@"no uri for folder");
-         */
-        
-//        error = [(SonosUPNPController *)self.upnpCon playPlaylistOrQueue:(MediaServer1ContainerObject *)self.upnpCon.currentBasicObject withQueueUri:self.queueUri];
-//        if (error == 1) NSLog(@"no renderer or server");
-//        else if (error == 2) NSLog(@"render can not play object with this uri");
-//        else if (error == 3) NSLog(@"no uri for queue");
+        if (self.deviceType == UPNPRendererType_Generic)
+        {
+            error = [self.upnpCon playFolderPlaylist:(MediaServer1ContainerObject *)self.upnpCon.currentBasicObject];
+            [UPNPController upnpErrorLog:error];
+        }
+        else if (self.deviceType == UPNPRendererType_Sonos)
+        {
+            error = [(SonosUPNPController *)self.upnpCon playPlaylistOrQueue:(MediaServer1ContainerObject *)self.upnpCon.currentBasicObject];
+            [SonosUPNPController upnpErrorLog:error];
+        }
     }
 }
 

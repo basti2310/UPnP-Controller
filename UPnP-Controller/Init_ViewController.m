@@ -9,6 +9,7 @@
 #import "Init_ViewController.h"
 #import "UPNPDiscovery.h"
 #import "UPNPController.h"
+#import "SonosUPNPController.h"
 #import "Server_TableViewController.h"
 #import "Player_TableViewController.h"
 #import "Media_TableViewController.h"
@@ -88,7 +89,18 @@ static UPNPController *upnpCon2;
     if (newServerOrRenderer)
     {
         newServerOrRenderer = NO;
-        self.upnpCon = [[UPNPController alloc] initWithRenderer:controllerPlayer.renderer andServer:controllerServer.server];
+        
+        // device type
+        if (([UPNPController deviceType:controllerServer.server] == UPNPRendererType_Sonos) && ([UPNPController deviceType:controllerPlayer.renderer] == UPNPRendererType_Sonos))   // sonos
+        {
+            deviceType = UPNPRendererType_Sonos;
+            self.upnpCon = [[SonosUPNPController alloc] initWithRenderer:controllerPlayer.renderer andServer:controllerServer.server];
+        }
+        else
+        {
+            deviceType = UPNPRendererType_Generic;
+            self.upnpCon = [[UPNPController alloc] initWithRenderer:controllerPlayer.renderer andServer:controllerServer.server];
+        }
     }
     
     self.lblQuelle.text = controllerServer.server.friendlyName;
@@ -136,12 +148,6 @@ static UPNPController *upnpCon2;
     if (self.sliderSeek.value > 5 || self.lblTrackName.text != nil)
     {
         seekTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(updateSeek) userInfo:nil repeats:YES];
-    }
-    
-    // device type
-    if ([UPNPController deviceType:controllerServer.server] == [UPNPController deviceType:controllerPlayer.renderer])
-    {
-        deviceType = [UPNPController deviceType:controllerPlayer.renderer];
     }
 }
 
